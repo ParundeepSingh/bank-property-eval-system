@@ -125,7 +125,7 @@ public class PvsValRequestServiceImpl implements PvsValRequestService {
         String referenceNum = ReferenceNumUtility.constructReferenceNum(pvsValuationTask.getReqId(), pvsValuationTask.getReceivedDateTime());
         return PvsValuationRequestItem.builder()
                 .pvsValReqId(pvsValuationTask.getReqId())
-                .receivedDataTime(pvsValuationTask.getReceivedDateTime())
+                .receivedDatetime(pvsValuationTask.getReceivedDateTime())
                 .createdDatetime(pvsValuationTask.getCreatedDateTime())
                 .modifiedDatetime(pvsValuationTask.getModifiedDateTime())
                 .referenceNum(referenceNum)

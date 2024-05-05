@@ -47,6 +47,7 @@ public class PvsValRequestsController {
     }
 
     @GetMapping("/tasks")
+    @CrossOrigin("http://localhost:4200")
     public ResponseEntity<?> getPvsValuationTasks() {
 
         List<PvsValuationRequestItem> pvsValuationRequestItems = new ArrayList<>();

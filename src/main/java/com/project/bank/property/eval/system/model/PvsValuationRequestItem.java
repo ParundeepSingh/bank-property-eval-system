@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class PvsValuationRequestItem {
 
     @JsonIgnore
@@ -24,7 +23,7 @@ public class PvsValuationRequestItem {
     private String referenceNum;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime receivedDataTime;
+    LocalDateTime receivedDatetime;
 
     String borrowerName;
 
