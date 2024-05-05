@@ -7,8 +7,6 @@ import com.project.bank.property.eval.system.service.InitiatorDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
 public class InitiatorDetailsServiceImpl implements InitiatorDetailsService {
 

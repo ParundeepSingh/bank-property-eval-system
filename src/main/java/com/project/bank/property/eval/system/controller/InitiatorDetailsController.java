@@ -28,7 +28,7 @@ public class InitiatorDetailsController {
     private JwtUtility jwtUtility;
 
     @GetMapping("/initiator-details")
-    public ResponseEntity<?> getInitiatorDetails(){
+    public ResponseEntity<?> getInitiatorDetails() {
         Map<String, Object> claims = jwtUtility.getClaimsFromAuthenticationHeader();
         String userId = String.valueOf(claims.get(USER_ID));
         InitiatorDetails initiatorDetails = initiatorDetailsService.getInitiatorDetailsByUserId(Integer.valueOf(userId));

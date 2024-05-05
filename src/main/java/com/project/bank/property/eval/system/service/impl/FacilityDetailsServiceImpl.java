@@ -6,7 +6,6 @@ import com.project.bank.property.eval.system.model.facility.types.CCY;
 import com.project.bank.property.eval.system.model.facility.types.FacilityType;
 import com.project.bank.property.eval.system.repository.FacilityDetailsRepository;
 import com.project.bank.property.eval.system.service.FacilityDetailsService;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +43,7 @@ public class FacilityDetailsServiceImpl implements FacilityDetailsService {
         return facilityDetailsDaoList.stream().map(item -> mapFacilityDetailsDaoToModel(item)).collect(Collectors.toList());
     }
 
-    private FacilityDetails mapFacilityDetailsDaoToModel(FacilityDetailsDao facilityDetailsDao){
+    private FacilityDetails mapFacilityDetailsDaoToModel(FacilityDetailsDao facilityDetailsDao) {
         return FacilityDetails.builder()
                 .type(FacilityType.valueOf(facilityDetailsDao.getType()))
                 .category(facilityDetailsDao.getCategory())

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Repository class to perform operations on Property Valuation Request Details Table.
  */
-public interface PVSValuationRequestRepository extends JpaRepository<PVSValuationRequestDao,Integer> {
+public interface PVSValuationRequestRepository extends JpaRepository<PVSValuationRequestDao, Integer> {
 
     PVSValuationRequestDao save(PVSValuationRequestDao pvsValuationRequestDao);
 

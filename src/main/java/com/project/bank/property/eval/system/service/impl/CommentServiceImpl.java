@@ -21,15 +21,15 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> save(List<Comment> comments, long pvsValReqId) {
 
         List<CommentsDao> commentsDaos = new ArrayList<>();
-        for(Comment comment :comments){
-            commentsDaos.add(constructCommentDaoFromModel(comment,pvsValReqId));
+        for (Comment comment : comments) {
+            commentsDaos.add(constructCommentDaoFromModel(comment, pvsValReqId));
         }
 
         commentsRepository.saveAll(commentsDaos);
         return comments;
     }
 
-    private CommentsDao constructCommentDaoFromModel(Comment comment, long pvsValReqId){
+    private CommentsDao constructCommentDaoFromModel(Comment comment, long pvsValReqId) {
         return new CommentsDao()
                 .setCommentBody(comment.getBody())
                 .setPvsReqId(pvsValReqId)

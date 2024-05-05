@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Repository class to perform operations on Comments Table.
  */
-public interface CommentsRepository extends JpaRepository<CommentsDao,Integer> {
+public interface CommentsRepository extends JpaRepository<CommentsDao, Integer> {
     CommentsDao save(CommentsDao commentsDao);
 
 }

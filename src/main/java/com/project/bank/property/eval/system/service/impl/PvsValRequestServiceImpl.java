@@ -75,7 +75,7 @@ public class PvsValRequestServiceImpl implements PvsValRequestService {
     }
 
 
-    public List<PvsValuationRequestItem> getAllPvsValuationRequestItem(int userId){
+    public List<PvsValuationRequestItem> getAllPvsValuationRequestItem(int userId) {
 
         List<PvsValuationRequestItem> pvsValuationRequestItems = new ArrayList<>();
 
@@ -96,32 +96,32 @@ public class PvsValRequestServiceImpl implements PvsValRequestService {
         return pvsValuationRequestItems;
     }
 
-    private void updateBorrowerName(List<PvsValuationRequestItem> pvsValuationRequestItems, List<Borrower> borrowers){
+    private void updateBorrowerName(List<PvsValuationRequestItem> pvsValuationRequestItems, List<Borrower> borrowers) {
 
         Map<Long, Borrower> borrowerPvsReqIdMap = borrowers.stream().collect(Collectors.toMap(Borrower::getPvsValReqId, c -> c));
 
-        for(PvsValuationRequestItem pvsValuationRequestItem: pvsValuationRequestItems){
+        for (PvsValuationRequestItem pvsValuationRequestItem : pvsValuationRequestItems) {
             Borrower borrower = borrowerPvsReqIdMap.get(pvsValuationRequestItem.getPvsValReqId());
-            if(Objects.nonNull(borrower)){
+            if (Objects.nonNull(borrower)) {
                 pvsValuationRequestItem.setBorrowerName(borrower.getCustomerName());
             }
         }
     }
 
 
-    private void updateFosReferenceNumber(List<PvsValuationRequestItem> pvsValuationRequestItems ,List<PropertyValuationDetails> propertyValuationDetails){
+    private void updateFosReferenceNumber(List<PvsValuationRequestItem> pvsValuationRequestItems, List<PropertyValuationDetails> propertyValuationDetails) {
         Map<Long, PropertyValuationDetails> propertyValuationDetailsPvsReqIdMap = propertyValuationDetails.stream().collect(Collectors.toMap(PropertyValuationDetails::getPvsValReqId, c -> c));
 
-        for(PvsValuationRequestItem pvsValuationRequestItem: pvsValuationRequestItems){
+        for (PvsValuationRequestItem pvsValuationRequestItem : pvsValuationRequestItems) {
             PropertyValuationDetails propertyValuationDetailsItem = propertyValuationDetailsPvsReqIdMap.get(pvsValuationRequestItem.getPvsValReqId());
-            if(Objects.nonNull(propertyValuationDetailsItem)){
+            if (Objects.nonNull(propertyValuationDetailsItem)) {
                 pvsValuationRequestItem.setFosRef(propertyValuationDetailsItem.getFosRefNum());
             }
         }
     }
 
 
-    private PvsValuationRequestItem mapPvsValuationTaskToPvsValuationRequestItem(PvsValuationTask pvsValuationTask){
+    private PvsValuationRequestItem mapPvsValuationTaskToPvsValuationRequestItem(PvsValuationTask pvsValuationTask) {
         String referenceNum = ReferenceNumUtility.constructReferenceNum(pvsValuationTask.getReqId(), pvsValuationTask.getReceivedDateTime());
         return PvsValuationRequestItem.builder()
                 .pvsValReqId(pvsValuationTask.getReqId())

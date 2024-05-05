@@ -9,8 +9,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @EnableConfigurationProperties(JwtConfigurations.class)
 public class BankPropertyEvalApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BankPropertyEvalApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BankPropertyEvalApplication.class, args);
+    }
 
 }

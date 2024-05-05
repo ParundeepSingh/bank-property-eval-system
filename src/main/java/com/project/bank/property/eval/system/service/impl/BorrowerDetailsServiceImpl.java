@@ -31,10 +31,10 @@ public class BorrowerDetailsServiceImpl implements BorrowerDetailsService {
                 customerDetailsRepository.save(constructCustomerDetailsDao(borrowerDetails.getMainBorrower()));
         long mainBorrowerCustomerId = customerDetailsDao.getId();
 
-        borrowerDetailsRepository.save(constructBorrowerDetailsDao(mainBorrowerCustomerId,pvsValReqId, true));
+        borrowerDetailsRepository.save(constructBorrowerDetailsDao(mainBorrowerCustomerId, pvsValReqId, true));
 
 
-        for(Borrower jointBorrower: borrowerDetails.getJointBorrowers()){
+        for (Borrower jointBorrower : borrowerDetails.getJointBorrowers()) {
             CustomerDetailsDao borrowerCustomerDetailsDao = constructCustomerDetailsDao(jointBorrower);
             borrowerCustomerDetailsDao = customerDetailsRepository.save(borrowerCustomerDetailsDao);
 
@@ -53,14 +53,14 @@ public class BorrowerDetailsServiceImpl implements BorrowerDetailsService {
 
         List<Long> customerIds = borrowerDetailsDaoList.stream().map(BorrowerDetailsDao::getCustomerId).collect(Collectors.toList());
 
-        List<CustomerDetailsDao> customerDetailsDaoList =  customerDetailsRepository.findAllById(customerIds);
+        List<CustomerDetailsDao> customerDetailsDaoList = customerDetailsRepository.findAllById(customerIds);
 
 
         Map<Long, CustomerDetailsDao> customerIdMapping = customerDetailsDaoList.stream().collect(Collectors.toMap(CustomerDetailsDao::getId, c -> c));
 
         List<Borrower> borrowers = new ArrayList<>();
 
-        for(BorrowerDetailsDao borrowerDetailsDao: borrowerDetailsDaoList){
+        for (BorrowerDetailsDao borrowerDetailsDao : borrowerDetailsDaoList) {
             Borrower borrower = new Borrower();
             borrower.setPvsValReqId(borrowerDetailsDao.getPvsReqId());
             CustomerDetailsDao customerDetailsDao1 = customerIdMapping.get(borrowerDetailsDao.getCustomerId());
@@ -76,12 +76,12 @@ public class BorrowerDetailsServiceImpl implements BorrowerDetailsService {
         return borrowers;
     }
 
-    private Borrower mapBorrowerDetailsDaoToBorrowerModel(BorrowerDetailsDao borrowerDetailsDao){
+    private Borrower mapBorrowerDetailsDaoToBorrowerModel(BorrowerDetailsDao borrowerDetailsDao) {
         return Borrower.builder()
                 .build();
     }
 
-    private BorrowerDetailsDao constructBorrowerDetailsDao(long customerId, long pvsValReqId, boolean isMainBorrower){
+    private BorrowerDetailsDao constructBorrowerDetailsDao(long customerId, long pvsValReqId, boolean isMainBorrower) {
         return new BorrowerDetailsDao()
                 .setCustomerId(customerId)
                 .setPvsReqId(pvsValReqId)
@@ -89,13 +89,13 @@ public class BorrowerDetailsServiceImpl implements BorrowerDetailsService {
     }
 
 
-    private CustomerDetailsDao constructCustomerDetailsDao(Borrower borrower){
+    private CustomerDetailsDao constructCustomerDetailsDao(Borrower borrower) {
         return new CustomerDetailsDao()
                 .setName(borrower.getCustomerName())
                 .setEmail(borrower.getEmail())
                 .setNumber(borrower.getContactNum())
                 .setAddress(borrower.getAddress());
     }
-    
-    
+
+
 }

@@ -9,11 +9,12 @@ public class ReferenceNumUtility {
 
     /**
      * Method constructs the Reference Number for PVS Valuation Requests.
+     *
      * @param pvsReqId
      * @param receivedDateTime
      * @return
      */
-    public static String constructReferenceNum(long pvsReqId, LocalDateTime receivedDateTime){
+    public static String constructReferenceNum(long pvsReqId, LocalDateTime receivedDateTime) {
         StringBuilder referenceNum = new StringBuilder("PV");
 
         referenceNum.append(receivedDateTime.getYear());
@@ -29,7 +30,7 @@ public class ReferenceNumUtility {
         int diff = 4 - lenOfSequenceNum;
 
         StringBuilder sequenceNumSubStr = new StringBuilder();
-        while(diff-- > 0) sequenceNumSubStr.append("0");
+        while (diff-- > 0) sequenceNumSubStr.append("0");
 
         referenceNum.append(sequenceNumSubStr + sequenceNum);
 
@@ -38,11 +39,12 @@ public class ReferenceNumUtility {
 
     /**
      * Method constructs the FOS Reference Number for Property Valuation Details.
+     *
      * @param applicationDatetime
      * @param sequenceNum
      * @return
      */
-    public static String constructFosReferenceNumber(LocalDateTime applicationDatetime, long sequenceNum){
+    public static String constructFosReferenceNumber(LocalDateTime applicationDatetime, long sequenceNum) {
         StringBuilder fosReferenceNum = new StringBuilder("");
 
         fosReferenceNum.append(applicationDatetime.getYear());
@@ -55,7 +57,7 @@ public class ReferenceNumUtility {
         int diff = 4 - lenOfSequenceNum;
 
         StringBuilder sequenceNumSubStr = new StringBuilder();
-        while(diff-- > 0) sequenceNumSubStr.append("0");
+        while (diff-- > 0) sequenceNumSubStr.append("0");
 
         fosReferenceNum.append(sequenceNumSubStr + sequenceNumStr);
 

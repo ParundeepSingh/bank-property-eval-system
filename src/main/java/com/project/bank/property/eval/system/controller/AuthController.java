@@ -26,29 +26,29 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> getToken(
-            @RequestBody LoginRequest loginRequest){
+            @RequestBody LoginRequest loginRequest) {
         LoginResponse loginResponse = authService.login(loginRequest);
         return new ResponseEntity<>(loginResponse, HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public String register(
-            @RequestBody RegisterRequest registerRequest){
-         authService.register(registerRequest);
+            @RequestBody RegisterRequest registerRequest) {
+        authService.register(registerRequest);
         return "SUCCESS";
     }
 
 
     @ExceptionHandler({InvalidCredentialsException.class})
-    public ResponseEntity<?> handleInvalidCredentialsException(InvalidCredentialsException ex){
-        ErrorResponse errorResponse = ErrorResponse.builder(ex,HttpStatus.UNAUTHORIZED, ex.getMessage()).build();
+    public ResponseEntity<?> handleInvalidCredentialsException(InvalidCredentialsException ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.UNAUTHORIZED, ex.getMessage()).build();
         return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
 
 
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<?> handleOtherException(Exception ex){
-        ErrorResponse errorResponse = ErrorResponse.builder(ex,HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()).build();
+    public ResponseEntity<?> handleOtherException(Exception ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()).build();
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

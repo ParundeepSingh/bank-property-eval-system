@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Repository class to perform operations on Borrower Details Table.
  */
-public interface BorrowerDetailsRepository extends JpaRepository<BorrowerDetailsDao,Integer> {
+public interface BorrowerDetailsRepository extends JpaRepository<BorrowerDetailsDao, Integer> {
 
     BorrowerDetailsDao save(BorrowerDetailsDao borrowerDetailsDao);
 

@@ -15,7 +15,7 @@ public class ApplicationConfiguration {
 
     @Bean
     @Primary
-    public ObjectMapper objectMapper(){
+    public ObjectMapper objectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         return objectMapper;

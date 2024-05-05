@@ -3,8 +3,8 @@ package com.project.bank.property.eval.system.util;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
-import java.time.LocalDateTime;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * Utility class to convert LocalDateTime to Timestamp and vice-versa.
@@ -14,6 +14,7 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
     /**
      * Method converts the LocalDateTime to Timestamp
+     *
      * @param locDateTime
      * @return
      */
@@ -24,6 +25,7 @@ public class LocalDateTimeConverter implements AttributeConverter<LocalDateTime,
 
     /**
      * Method converts the Timestamp to LocalDateTime
+     *
      * @param sqlTimestamp
      * @return
      */

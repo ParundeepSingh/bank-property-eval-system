@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Repository class to perform operations on Facility Details Table.
  */
-public interface FacilityDetailsRepository extends JpaRepository<FacilityDetailsDao,Integer> {
+public interface FacilityDetailsRepository extends JpaRepository<FacilityDetailsDao, Integer> {
 
     FacilityDetailsDao save(FacilityDetailsDao facilityDetailsDao);
 

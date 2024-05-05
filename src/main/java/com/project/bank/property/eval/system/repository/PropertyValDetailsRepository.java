@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Repository class to perform operations on Property Valuation Details Table.
  */
-public interface PropertyValDetailsRepository extends JpaRepository<PropertyValDetailsDao,Integer> {
+public interface PropertyValDetailsRepository extends JpaRepository<PropertyValDetailsDao, Integer> {
 
     PropertyValDetailsDao save(PropertyValDetailsDao propertyEvalDetailsDao);
 

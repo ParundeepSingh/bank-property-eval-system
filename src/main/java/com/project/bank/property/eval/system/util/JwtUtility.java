@@ -26,10 +26,11 @@ public class JwtUtility {
 
     /**
      * Method fetches the Authentication Claims from incoming controller requests.
+     *
      * @return
      */
     @SneakyThrows
-    public Map<String,Object> getClaimsFromAuthenticationHeader(){
+    public Map<String, Object> getClaimsFromAuthenticationHeader() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         JsonNode jsonNode = objectMapper.convertValue(authentication.getCredentials(), JsonNode.class);
         JsonNode jsonNode1 = jsonNode.at("/tokenValue");

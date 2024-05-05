@@ -11,6 +11,7 @@ public interface AuthService {
 
     /**
      * Method performs the login
+     *
      * @param loginRequest
      * @return
      */
@@ -18,6 +19,7 @@ public interface AuthService {
 
     /**
      * Method performs a new user registration
+     *
      * @param registerRequest
      */
     void register(RegisterRequest registerRequest);

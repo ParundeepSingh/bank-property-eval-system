@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Repository class to perform operations on Customer Details Table.
  */
-public interface CustomerDetailsRepository extends JpaRepository<CustomerDetailsDao,Integer> {
+public interface CustomerDetailsRepository extends JpaRepository<CustomerDetailsDao, Integer> {
 
     CustomerDetailsDao save(CustomerDetailsDao customerDetailsDao);
 

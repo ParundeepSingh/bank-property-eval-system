@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Repository class to perform operations on User Data Table.
  */
-public interface UserDataRepository extends JpaRepository<UserData,Integer> {
+public interface UserDataRepository extends JpaRepository<UserData, Integer> {
 
     UserData findByEmailAddress(String emailAddress);
 

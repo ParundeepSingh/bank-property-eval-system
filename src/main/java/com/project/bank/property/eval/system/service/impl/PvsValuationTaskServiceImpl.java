@@ -18,7 +18,7 @@ public class PvsValuationTaskServiceImpl implements PvsValuationTaskService {
     private PVSValuationRequestRepository pvsValuationRequestRepository;
 
     @Override
-    public PvsValuationTask createNewPvsValuationTask(int userId){
+    public PvsValuationTask createNewPvsValuationTask(int userId) {
         PVSValuationRequestDao pvsValuationRequestDao = pvsValuationRequestRepository.save(
                 new PVSValuationRequestDao()
                         .setReceivedDateTime(LocalDateTime.now())
@@ -41,13 +41,13 @@ public class PvsValuationTaskServiceImpl implements PvsValuationTaskService {
     }
 
 
-    public List<PvsValuationTask> getAllPvsValuationTask(int userId){
+    public List<PvsValuationTask> getAllPvsValuationTask(int userId) {
         List<PVSValuationRequestDao> pvsValuationRequestDaos = pvsValuationRequestRepository.findByUserId(userId);
 
         return pvsValuationRequestDaos.stream().map(item -> mapPvsValuationTaskDaoToModel(item)).collect(Collectors.toList());
     }
 
-    private PvsValuationTask mapPvsValuationTaskDaoToModel(PVSValuationRequestDao pvsValuationRequestDao){
+    private PvsValuationTask mapPvsValuationTaskDaoToModel(PVSValuationRequestDao pvsValuationRequestDao) {
         return PvsValuationTask.builder()
                 .reqId(pvsValuationRequestDao.getRequestId())
                 .receivedDateTime(pvsValuationRequestDao.getReceivedDateTime())

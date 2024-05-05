@@ -23,27 +23,26 @@ public class JwtServiceImpl {
     @Autowired
     private JwtConfigurations jwtConfigurations;
 
-    public String generateJWT(Map<String, Object> claims){
+    public String generateJWT(Map<String, Object> claims) {
         SecretKey secretKey = jwtConfigurations.getKey();
         JWSAlgorithm algorithm = jwtConfigurations.getAlgorithm();
 
         JWSHeader header = new JWSHeader(algorithm);
         JWTClaimsSet claimsSet = buildClaimSet(claims);
 
-        SignedJWT jwt = new SignedJWT(header,claimsSet);
+        SignedJWT jwt = new SignedJWT(header, claimsSet);
 
-        try{
+        try {
             MACSigner signer = new MACSigner(secretKey);
             jwt.sign(signer);
-        }
-        catch (JOSEException ex){
+        } catch (JOSEException ex) {
             throw new RuntimeException("Unable to generate JWT", ex);
         }
 
         return jwt.serialize();
     }
 
-    private JWTClaimsSet buildClaimSet(Map<String, Object> claims){
+    private JWTClaimsSet buildClaimSet(Map<String, Object> claims) {
         String issuer = jwtConfigurations.getIssuer();
         Instant issuedAt = Instant.now();
         Instant expirationTime = issuedAt.plus(jwtConfigurations.getExpiresIn());

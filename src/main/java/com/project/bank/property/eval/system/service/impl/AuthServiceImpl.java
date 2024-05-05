@@ -31,14 +31,14 @@ public class AuthServiceImpl implements AuthService {
 
     @SneakyThrows
     @Override
-    public LoginResponse login(LoginRequest loginRequest){
+    public LoginResponse login(LoginRequest loginRequest) {
 
         UserData userData = this.userDataRepository.findByEmailAddress(loginRequest.getEmailAddress());
 
-        if(Objects.isNull(userData)) throw new InvalidCredentialsException("Invalid Credentials !");
+        if (Objects.isNull(userData)) throw new InvalidCredentialsException("Invalid Credentials !");
 
         boolean isValidPassword = passwordEncoder.matches(loginRequest.getPassword(), userData.getEncryptedPassword());
-        if(!isValidPassword) throw new InvalidCredentialsException("Invalid Credentials !");
+        if (!isValidPassword) throw new InvalidCredentialsException("Invalid Credentials !");
 
 
         String jwt = jwtService.generateJWT(getClaimsForLoginRequest(userData));
@@ -52,19 +52,19 @@ public class AuthServiceImpl implements AuthService {
         return loginResponse;
     }
 
-    private Map<String, Object> getClaimsForLoginRequest(UserData userData){
+    private Map<String, Object> getClaimsForLoginRequest(UserData userData) {
         return Map.of(
                 "email_address", userData.getEmailAddress(),
                 "user_id", userData.getId()
         );
     }
 
-    public void register(RegisterRequest registerRequest){
+    public void register(RegisterRequest registerRequest) {
         UserData userData = convertRegisterRequestToUserDao(registerRequest);
         userDataRepository.save(userData);
     }
 
-    private UserData convertRegisterRequestToUserDao(RegisterRequest registerRequest){
+    private UserData convertRegisterRequestToUserDao(RegisterRequest registerRequest) {
         UserData userData = new UserData();
         userData.setUserName(registerRequest.getUsername());
         userData.setEmailAddress(registerRequest.getEmailAddress());

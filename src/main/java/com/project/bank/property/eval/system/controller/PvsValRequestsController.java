@@ -35,19 +35,19 @@ public class PvsValRequestsController {
     private PvsValRequestService pvsValRequestService;
 
     @PostMapping("/submit")
-    public ResponseEntity<?> submitPvsValRequest(@RequestBody PvsValRequestDetails pvsValRequestDetails){
-        pvsValRequestService.submitPvsValRequest(pvsValRequestDetails,2);
+    public ResponseEntity<?> submitPvsValRequest(@RequestBody PvsValRequestDetails pvsValRequestDetails) {
+        pvsValRequestService.submitPvsValRequest(pvsValRequestDetails, 2);
         return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
     }
 
     @ExceptionHandler({Exception.class})
-    public ResponseEntity<?> handleOtherException(Exception ex){
-        ErrorResponse errorResponse = ErrorResponse.builder(ex,HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()).build();
+    public ResponseEntity<?> handleOtherException(Exception ex) {
+        ErrorResponse errorResponse = ErrorResponse.builder(ex, HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()).build();
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/tasks")
-    public ResponseEntity<?> getPvsValuationTasks(){
+    public ResponseEntity<?> getPvsValuationTasks() {
 
         List<PvsValuationRequestItem> pvsValuationRequestItems = new ArrayList<>();
 
@@ -55,7 +55,7 @@ public class PvsValRequestsController {
         return new ResponseEntity<>(pvsValuationRequestItems, HttpStatus.OK);
     }
 
-    private PvsValRequestDetails getDummy(){
+    private PvsValRequestDetails getDummy() {
         return PvsValRequestDetails.builder()
                 .facilityDetails(FacilityDetails.builder()
                         .type(FacilityType.NON_REVOLVING)
@@ -81,11 +81,11 @@ public class PvsValRequestsController {
                                         .build())
                                 .jointBorrowers(
                                         List.of(Borrower.builder()
-                                                        .email("amanda2@yahoo.com")
-                                                        .address("Address Sample Text")
-                                                        .customerName("Sample Text")
-                                                        .contactNum("Amanda Smith")
-                                                        .build()))
+                                                .email("amanda2@yahoo.com")
+                                                .address("Address Sample Text")
+                                                .customerName("Sample Text")
+                                                .contactNum("Amanda Smith")
+                                                .build()))
                                 .build()
                 )
                 .commentDetails(List.of(

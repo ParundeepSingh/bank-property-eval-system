@@ -1,6 +1,6 @@
 package com.project.bank.property.eval.system.model.pvs.val.request;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.project.bank.property.eval.system.model.borrower.BorrowerDetails;
 import com.project.bank.property.eval.system.model.comment.Comment;
@@ -18,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class PvsValRequestDetails {
 
     FacilityDetails facilityDetails;

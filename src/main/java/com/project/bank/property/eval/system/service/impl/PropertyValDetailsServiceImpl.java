@@ -41,7 +41,7 @@ public class PropertyValDetailsServiceImpl implements PropertyValDetailsService 
         return propertyValDetailsDaoList.stream().map(item -> mapPropertyValDetailsDaoToModel(item)).collect(Collectors.toList());
     }
 
-    private PropertyValuationDetails mapPropertyValDetailsDaoToModel(PropertyValDetailsDao propertyValDetailsDao){
+    private PropertyValuationDetails mapPropertyValDetailsDaoToModel(PropertyValDetailsDao propertyValDetailsDao) {
 
         String fosReferenceNumber = ReferenceNumUtility.constructFosReferenceNumber(propertyValDetailsDao.getApplicationDateTime(), propertyValDetailsDao.getId());
 
