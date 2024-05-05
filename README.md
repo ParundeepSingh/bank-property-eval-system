@@ -7,3 +7,6 @@
 * BCryptPasswordEncoder for encrypting the passwords.
 * JPA Repository for performing CRUD operations.
 
+## ERD Diagram
+
+![pvs_4](https://github.com/ParundeepSingh/bank-property-eval-system/assets/52928589/be762101-78b9-414f-ad68-d319cddc4048)
